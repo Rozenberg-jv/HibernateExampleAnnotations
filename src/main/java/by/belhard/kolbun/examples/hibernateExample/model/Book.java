@@ -24,7 +24,14 @@ public class Book {
 	@Temporal(TemporalType.DATE)
 	private Date publicationDate;
 
-	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private List<Author> authorList = new ArrayList<>();
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Author> authorList;
+
+	public List<Author> getAuthorList() {
+
+		if (authorList == null)
+			return new ArrayList<>();
+		return authorList;
+	}
 
 }
